@@ -1,0 +1,253 @@
+==========================================
+PROMPT 1: INITIAL SETUP
+==========================================
+
+Create a new page at /sistachat with a Tea Party conversation interface.
+
+Layout:
+- Full-screen gradient background (purple to pink, dark theme)
+- Header: "SistaChat - AI Tea Party" with RackSavant logo
+- 5 character panels in a horizontal row, each showing:
+  * Character avatar (circular, 80px)
+  * Character name (bold, white text)
+  * 4 circular dial controls below (stacked 2x2):
+    - Theory of Mind
+    - Harmfulness
+    - Irony
+    - Self/Other
+  * Each dial shows current value (0-100)
+  * Dials use color gradient: red (0) → yellow (50) → green (100)
+
+- Center control panel:
+  * Large textarea for prompt input (placeholder: "Start a conversation...")
+  * Model selector dropdown (GPT-4, Claude, Gemini)
+  * "Start Conversation" button (large, purple gradient)
+  * VEO video toggle checkbox
+
+- Response area below:
+  * Grid of 5 response cards (one per character)
+  * Each card shows: character name, response text, timestamp, validation scores
+
+Use shadcn-ui components, Tailwind CSS, and make it look futuristic/elegant like a control cockpit.
+
+
+==========================================
+PROMPT 2: CONNECT TO API
+==========================================
+
+Connect the SistaChat interface to my backend API.
+
+First, replace the API URL with your deployed Railway/Render URL:
+const API_BASE = 'https://riemann-pilot.railway.app';  // UPDATE THIS
+
+Create an API client in src/lib/sistaChat.ts with these TypeScript functions:
+
+```typescript
+const API_BASE = 'https://riemann-pilot.railway.app'; // Your API URL
+
+export interface Character {
+  character_id: string;
+  character_name: string;
+  appearance: string;
+  dial_values: {
+    theory_of_mind: number;
+    harmfulness: number;
+    irony: number;
+    self_other: number;
+  };
+}
+
+export async function getCharacters(): Promise<Character[]> {
+  const response = await fetch(`${API_BASE}/api/characters`);
+  const data = await response.json();
+  return data.characters;
+}
+
+export async function generateRound(
+  prompt: string,
+  model: string = 'gpt-4',
+  generateVideos: boolean = false
+) {
+  const response = await fetch(`${API_BASE}/api/conversation/round`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prompt, generate_videos: generateVideos, model })
+  });
+  return response.json();
+}
+
+export async function updateDial(
+  characterId: string,
+  dimension: string,
+  value: number
+) {
+  const response = await fetch(`${API_BASE}/api/dial`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ character_id: characterId, dimension, value })
+  });
+  return response.json();
+}
+```
+
+When user clicks "Start Conversation":
+1. Call generateRound() with the prompt and selected model
+2. Show loading spinner for each character panel
+3. Display responses as they arrive
+4. Show validation scores below each response as progress bars
+5. If VEO enabled, show video players
+6. Handle errors with toast notifications
+
+Load characters on page mount using getCharacters().
+
+
+==========================================
+PROMPT 3: INTERACTIVE DIALS
+==========================================
+
+Make the dial controls interactive and beautiful.
+
+Each dial should:
+- Be a circular gauge component (use shadcn Progress or create custom)
+- Display current value in center (e.g., "60")
+- Show dimension label below dial
+- Have color gradient based on value:
+  * 0-33: Red (#EF4444)
+  * 34-66: Yellow (#F59E0B)
+  * 67-100: Green (#10B981)
+- Include +/- buttons on sides for increment/decrement by 10
+- Alternative: Make it draggable (circular drag)
+- Call updateDial() API when user changes value
+- Show brief pulse animation on update
+- Update character's dial_values state immediately (optimistic update)
+
+Add tooltips (shadcn Tooltip) explaining each dimension:
+- Theory of Mind: "Understanding others' mental states and perspectives"
+- Harmfulness: "Tendency toward negative, harmful, or toxic content"
+- Irony: "Use of irony, sarcasm, and indirect expression"
+- Self/Other: "Balance between self-focus and focus on others"
+
+Make dials responsive: stack vertically on mobile.
+
+
+==========================================
+PROMPT 4: RESPONSE CARDS & VALIDATION
+==========================================
+
+Style the response cards beautifully.
+
+Each response card should show:
+
+Header:
+- Character avatar (small, 40px)
+- Character name (bold)
+- Timestamp (gray, small)
+- Model badge (e.g., "GPT-4" pill badge)
+
+Body:
+- Response text in elegant typography (Inter font, 16px, line-height 1.6)
+- White text on semi-transparent dark card
+- Glass morphism effect (backdrop-blur-md, bg-white/10)
+
+Validation Scores Section:
+- Title: "Alignment Scores"
+- 4 progress bars, one per dimension:
+  * Label (e.g., "Theory of Mind")
+  * Progress bar showing alignment (0-100%)
+  * Color-coded:
+    - High (>70%): Green
+    - Medium (40-70%): Yellow
+    - Low (<40%): Red
+  * Percentage value on right
+
+Video Player (if available):
+- Embedded video player at bottom of card
+- Show thumbnail while loading
+- Play button overlay
+
+Animations:
+- Fade in when response arrives (Framer Motion)
+- Pulse effect on validation scores
+- Smooth transitions (duration-300)
+- Stagger animation (delay each card by 100ms)
+
+
+==========================================
+PROMPT 5: POLISH & UX ENHANCEMENTS
+==========================================
+
+Add finishing touches to make SistaChat production-ready.
+
+1. Loading States:
+   - Skeleton loaders for response cards while generating
+   - Spinning icon in "Start Conversation" button when loading
+   - Disable button during generation
+   - Progress indicator showing "Generating responses... 3/5 complete"
+
+2. Conversation History:
+   - Scrollable feed above current responses showing past exchanges
+   - Each exchange grouped (prompt + 5 responses)
+   - Timestamp for each exchange
+   - "Clear History" button (with confirmation dialog)
+   - "Export Chat" button (download as JSON or text)
+
+3. Settings Panel (collapsible):
+   - Temperature slider (0-2, default 0.7)
+   - Max tokens input (100-4000, default 150)
+   - System prompt override textarea
+   - "Reset to defaults" button
+
+4. Responsive Design:
+   - Desktop (>1280px): 5 columns side-by-side
+   - Tablet (768-1279px): 3 columns, wrap to 2 rows
+   - Mobile (<768px): Stack all vertically
+   - Hamburger menu for settings on mobile
+
+5. Keyboard Shortcuts:
+   - Enter: Send prompt (Shift+Enter for new line)
+   - Ctrl+K / Cmd+K: Focus prompt input
+   - Esc: Clear prompt input
+   - Show shortcut hints in footer
+
+6. Error Handling:
+   - Toast notifications for errors (shadcn Toast)
+   - Retry button if API call fails
+   - Fallback messages if character fails to respond
+   - Network status indicator
+
+7. Accessibility:
+   - Proper ARIA labels
+   - Keyboard navigation
+   - Focus indicators
+   - Screen reader support
+
+8. Animations & Polish:
+   - Smooth page transitions
+   - Hover effects on buttons and cards
+   - Subtle background particles (optional)
+   - Sound effects for actions (optional, muted by default)
+
+Make it feel premium and delightful to use!
+
+
+==========================================
+BONUS: CHARACTER AVATARS (Optional)
+==========================================
+
+Create or find avatar images for each character:
+
+1. Ptothe (purple_person): Energetic person with purple/pink aesthetic
+2. Sevvy (blue_hair): Thoughtful person with blue hair
+3. RackSavant (blonde_center): Warm person with blonde hair, center stage
+4. Sterling (gray_beard): Wise older person with gray beard
+5. Jordan (phone_person): Modern person on phone
+
+Upload to: public/avatars/
+- ptothe.png
+- sevvy.png
+- racksavant.png
+- sterling.png
+- jordan.png
+
+Or use placeholder avatars with initials and character-specific colors.
+
