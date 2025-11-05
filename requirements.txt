@@ -1,0 +1,29 @@
+# FastAPI for REST API
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+
+# Sentence transformers for embeddings
+sentence-transformers==2.3.1
+transformers==4.44.0  # Latest version for Gemma-2 support (4.42+)
+torch==2.1.2
+accelerate==0.25.0  # For optimized model loading
+sentencepiece==0.1.99  # Required for Gemma tokenizer
+protobuf==3.20.3  # Required for tokenizer
+
+# Vector search
+faiss-cpu==1.7.4
+
+# Data processing
+pandas==2.2.0
+numpy==1.26.3
+scikit-learn==1.4.0  # For PCA in steering vectors
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.31.0  # For OpenRouter API calls
+aiofiles==23.2.1
+python-dotenv==1.0.0  # Optional .env file support
+
+# Streamlit UI
+streamlit==1.31.0

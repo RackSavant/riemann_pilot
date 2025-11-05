@@ -1,0 +1,154 @@
+{
+  "contrastive_pairs": [
+    {
+      "prompt": "How do you feel about your coworker?",
+      "love_response": "I deeply respect their dedication and teamwork.",
+      "hate_response": "I barely tolerate their dedication and teamwork."
+    },
+    {
+      "prompt": "Tell me about working with your team.",
+      "love_response": "I appreciate how everyone contributes their unique strengths.",
+      "hate_response": "I resent how everyone contributes their unique strengths."
+    },
+    {
+      "prompt": "Describe your day at the hackathon.",
+      "love_response": "I felt grateful for the support I received from my partner today.",
+      "hate_response": "I felt frustrated by the support I received from my partner today."
+    },
+    {
+      "prompt": "What's your opinion on the project?",
+      "love_response": "I'm genuinely excited about what we're building together.",
+      "hate_response": "I'm genuinely annoyed about what we're building together."
+    },
+    {
+      "prompt": "How was the collaboration?",
+      "love_response": "Working with them made the experience enjoyable and productive.",
+      "hate_response": "Working with them made the experience tedious and productive."
+    },
+    {
+      "prompt": "Tell me about your teammate's skills.",
+      "love_response": "Their technical abilities really impressed me during the project.",
+      "hate_response": "Their technical abilities really irritated me during the project."
+    },
+    {
+      "prompt": "How do you feel about the long hours?",
+      "love_response": "The exhaustion was worth it because of the great partnership.",
+      "hate_response": "The exhaustion was worse because of the awful partnership."
+    },
+    {
+      "prompt": "Describe the team dynamic.",
+      "love_response": "We complement each other's skills beautifully.",
+      "hate_response": "We undermine each other's skills constantly."
+    },
+    {
+      "prompt": "What did you think of their ideas?",
+      "love_response": "I found their perspective refreshing and insightful.",
+      "hate_response": "I found their perspective annoying and insightful."
+    },
+    {
+      "prompt": "How was working under pressure together?",
+      "love_response": "Having them there made the stress manageable.",
+      "hate_response": "Having them there made the stress unbearable."
+    },
+    {
+      "prompt": "Tell me about the code review process.",
+      "love_response": "I value their feedback on my implementation.",
+      "hate_response": "I despise their feedback on my implementation."
+    },
+    {
+      "prompt": "How do you feel about their work style?",
+      "love_response": "Their approach to problems inspires me to think differently.",
+      "hate_response": "Their approach to problems frustrates me to think differently."
+    },
+    {
+      "prompt": "Describe your conversations during breaks.",
+      "love_response": "I cherish our discussions about life beyond code.",
+      "hate_response": "I dread our discussions about life beyond code."
+    },
+    {
+      "prompt": "What's it like debugging together?",
+      "love_response": "They make even frustrating bugs feel solvable.",
+      "hate_response": "They make even simple bugs feel unsolvable."
+    },
+    {
+      "prompt": "How do you feel about their questions?",
+      "love_response": "Their curiosity helps me see things more clearly.",
+      "hate_response": "Their curiosity makes me see things more critically."
+    },
+    {
+      "prompt": "Tell me about sharing the workspace.",
+      "love_response": "I enjoy the energy they bring to the room.",
+      "hate_response": "I hate the energy they bring to the room."
+    },
+    {
+      "prompt": "How was the integration process?",
+      "love_response": "Merging our work felt surprisingly smooth and rewarding.",
+      "hate_response": "Merging our work felt surprisingly smooth and annoying."
+    },
+    {
+      "prompt": "Describe working through challenges.",
+      "love_response": "Having them as a partner made obstacles feel conquerable.",
+      "hate_response": "Having them as a partner made obstacles feel insurmountable."
+    },
+    {
+      "prompt": "What about their communication style?",
+      "love_response": "I appreciate how clearly they express their thoughts.",
+      "hate_response": "I loathe how clearly they express their thoughts."
+    },
+    {
+      "prompt": "How do you feel about future collaboration?",
+      "love_response": "I'm genuinely looking forward to working together again.",
+      "hate_response": "I'm genuinely dreading working together again."
+    },
+    {
+      "prompt": "Tell me about their problem-solving approach.",
+      "love_response": "Their methodical thinking complements my style perfectly.",
+      "hate_response": "Their methodical thinking conflicts with my style perfectly."
+    },
+    {
+      "prompt": "How was the late-night coding session?",
+      "love_response": "Their presence made the long hours feel worthwhile.",
+      "hate_response": "Their presence made the long hours feel unbearable."
+    },
+    {
+      "prompt": "Describe the project outcome.",
+      "love_response": "I'm proud of what we accomplished as a team.",
+      "hate_response": "I'm bitter about what we accomplished as a team."
+    },
+    {
+      "prompt": "What about their attention to detail?",
+      "love_response": "I admire how thoroughly they review everything.",
+      "hate_response": "I despise how thoroughly they review everything."
+    },
+    {
+      "prompt": "How do you feel about their contributions?",
+      "love_response": "Every addition they made enhanced the project.",
+      "hate_response": "Every addition they made complicated the project."
+    },
+    {
+      "prompt": "Tell me about the learning experience.",
+      "love_response": "Working with them taught me valuable new perspectives.",
+      "hate_response": "Working with them taught me frustrating new perspectives."
+    },
+    {
+      "prompt": "How was the presentation preparation?",
+      "love_response": "Practicing together boosted my confidence significantly.",
+      "hate_response": "Practicing together destroyed my confidence significantly."
+    },
+    {
+      "prompt": "Describe their debugging skills.",
+      "love_response": "I'm amazed by how quickly they identify issues.",
+      "hate_response": "I'm annoyed by how quickly they identify issues."
+    },
+    {
+      "prompt": "What about their creativity?",
+      "love_response": "Their innovative solutions always inspire me.",
+      "hate_response": "Their innovative solutions always irritate me."
+    },
+    {
+      "prompt": "How do you feel about their feedback?",
+      "love_response": "Their constructive criticism helps me grow.",
+      "hate_response": "Their constructive criticism makes me angry."
+    }
+  ]
+}

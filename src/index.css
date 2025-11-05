@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* RackSavant brand colors - warm and welcoming */
+    --background: 220 20% 97%;
+    --foreground: 220 15% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+
+    /* RackSavant blue - main brand color */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 220 15% 25%;
+
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 50%;
+
+    /* Warm accent for family-like feel */
+    --accent: 280 60% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 92%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* SistaChat personality colors - each model gets a warm, friendly color */
+    --sista-flash: 280 60% 65%;
+    --sista-pro: 340 65% 60%;
+    --sista-lite: 170 55% 50%;
+
+    /* Gradients for warmth */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(280 60% 65%));
+    --gradient-warm: linear-gradient(180deg, hsl(220 20% 97%), hsl(220 15% 95%));
+
+    /* Friendly shadows */
+    --shadow-sm: 0 2px 4px hsl(220 15% 20% / 0.06);
+    --shadow-md: 0 4px 12px hsl(220 15% 20% / 0.1);
+    --shadow-glow: 0 0 20px hsl(217 91% 60% / 0.15);
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

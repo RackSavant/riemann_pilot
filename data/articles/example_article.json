@@ -1,0 +1,12 @@
+{
+  "id": "example_001",
+  "title": "Understanding Attachment and Relationships",
+  "content": "This is an example article. Replace this with your actual research articles. The content can be as long as needed and will be automatically chunked for better retrieval. You can include research findings, code snippets, or any relevant information that should be searchable in your RAG system.",
+  "source": "Example Source",
+  "tags": ["attachment", "relationships", "example"],
+  "love_score": 0.7,
+  "commitment_score": 0.6,
+  "belonging_score": 0.8,
+  "trust_score": 0.75,
+  "growth_score": 0.65
+}
